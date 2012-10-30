@@ -18,7 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 // PLEASE, DO NOT DECOMPILE MY WORK//
 // WITH THE FOLLOWING REASONS:     //
 // TO STEAL, COPYPASTE AND REUPLOAD//
-// MY WORK. THANKS IN ADVANCE!     //
+// THANKS IN ADVANCE!              //
 /////////////////////////////////////
 
 public class iBlock extends JavaPlugin{
@@ -49,27 +49,27 @@ public class iBlock extends JavaPlugin{
 		return player.isOp() || player.hasPermission("iBlock.debug");
 	}
 	public void loadConfiguration(){
-	     String bannedBucketWaterM = "water-bucket-message";
-	     String bannedBucketLavaM = "lava-bucket-message";
+	     String bannedBucketWaterM = "waterBucketM";
+	     String bannedBucketLavaM = "lavaBucketM";
 	     String bannedBlocksPlace = "bannedBlocksPlace";
 	     String bannedBlocksBreak = "bannedBlocksBreak";
-	     String bannedBlocksPlaceM = "bBlocksPlace-message";
-	     String bannedBlocksBreakM = "bBlocksBreak-message";
-	     String debugOn = "debugOn";
+	     String bannedBlocksPlaceM = "bannedBlocksPlaceM";
+	     String bannedBlocksBreakM = "bannedBlocksBreakM";
+	     String warnAdmins = "warnAdmins";
 	     	String bannedBucketWaterMV = "You are not allowed to place water here.";
 	     	String bannedBucketLavaMV = "You are not allowed to place lava here.";
 	        String bannedBlocksPlaceMV = "You are not allowed to place this block.";
 			String bannedBlocksBreakMV = "You are not allowed to break this block.";
 	     	String[] bannedBlocksPlaceList = {"7","9","11","19","30","52","78","79","97","120"};
 			String[] bannedBlocksBreakList = {"7"};
-			String[] debugOnT = {"false"};
+			String warnAdminsT = "true";
+			 this.getConfig().addDefault(warnAdmins, warnAdminsT);
 			 this.getConfig().addDefault(bannedBucketWaterM, bannedBucketWaterMV);
 			 this.getConfig().addDefault(bannedBucketLavaM, bannedBucketLavaMV);
 		     this.getConfig().addDefault(bannedBlocksPlaceM, bannedBlocksPlaceMV);
 		     this.getConfig().addDefault(bannedBlocksBreakM, bannedBlocksBreakMV);
 		     this.getConfig().addDefault(bannedBlocksPlace, Arrays.asList(bannedBlocksPlaceList));
 		     this.getConfig().addDefault(bannedBlocksBreak, Arrays.asList(bannedBlocksBreakList));
-		     this.getConfig().addDefault(debugOn, debugOnT);
 		     this.getConfig().options().copyDefaults(true);
 		     this.saveConfig();
 	}
@@ -80,19 +80,17 @@ public class iBlock extends JavaPlugin{
 		
         if(sender instanceof Player){
         	Player player = (Player) sender;
-        	if(cmd.getName().equalsIgnoreCase("iBlock") && !hasPermissionReload(player, "iBlock.reload")){
-        	player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
-        	if(hasPermissionDebug(player, "iBlock.debug") && this.getConfig().getBoolean("debugOn")){player.sendMessage(ChatColor.GOLD + "#DEBUG: !hasPermissionReload | onCommand: interrupted");}
-			return true;
+        	if(cmd.getName().equalsIgnoreCase("iBlock") && player.hasPermission("iBlock.reload")){
+    			this.reloadConfig();
+    			player.sendMessage(ChatColor.GREEN + "[iBlock Information]");
+    			player.sendMessage(ChatColor.RED + "Configuration file reloaded.");
+    			player.sendMessage(ChatColor.GREEN + "[Version Information]");
+    			player.sendMessage(ChatColor.RED + "Version: 3.0-DEV-b1");
+    			player.sendMessage(ChatColor.RED + "Updates: Needs more testing.");
+    			player.sendMessage(ChatColor.RED + "Thank you very much for using iBlock!");
+        	return true;
 		}else{
-			this.reloadConfig();
-			player.sendMessage(ChatColor.GREEN + "[iBlock Information]");
-			player.sendMessage(ChatColor.RED + "Configuration file reloaded.");
-			player.sendMessage(ChatColor.GREEN + "[Version Information]");
-			player.sendMessage(ChatColor.RED + "Version: 3.0-DEV-b1");
-			player.sendMessage(ChatColor.RED + "Updates: Needs more testing.");
-			player.sendMessage(ChatColor.RED + "Thank you very much for using iBlock!");
-			if(hasPermissionDebug(player, "iBlock.debug") && this.getConfig().getBoolean("debugOn")){player.sendMessage(ChatColor.GOLD + "#DEBUG: iBlock.reloadConfig: successful");}
+    		player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
 		return true; 
 		}
        }
