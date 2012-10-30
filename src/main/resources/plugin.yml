@@ -1,0 +1,8 @@
+name: iBlock
+version: ${project.version}
+main: me.Unscrewed.iBlock.iBlock
+commands:
+  iblock:
+    description: Reloads the iBlock configuration file.
+    usage: |
+           /<command>

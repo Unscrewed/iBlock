@@ -14,29 +14,33 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class iBlock extends JavaPlugin {
+	@SuppressWarnings("unused")
 	private iBlockListener blockListener;
+	@SuppressWarnings("unused")
 	private iPlayerListener playerListener;
+	@SuppressWarnings("unused")
+	private iEntityListener entityListener;
 	Logger log = Logger.getLogger("Minecraft");
 	PluginDescriptionFile pdfFile = this.getDescription();
 
 	public void onEnable() {
 		blockListener = new iBlockListener(this);
 		playerListener = new iPlayerListener(this);
+		entityListener = new iEntityListener(this);
 		PluginDescriptionFile pdfFile = this.getDescription();
-		log.info("[iBlock] Version " + pdfFile.getVersion()
-				+ " enabled successfully!");
+		log.info("[iBlock] Version " + pdfFile.getVersion() + " enabled successfully!");
+		@SuppressWarnings("unused")
 		PluginManager pm = getServer().getPluginManager();
 		loadConfiguration();
 		deniedBlocksPlace = getConfig().getIntegerList("bannedBlocksPlace");
 		deniedBlocksBreak = getConfig().getIntegerList("bannedBlocksBreak");
-		Updater updater = new Updater(this, "iBlock", this.getFile(),
-				Updater.UpdateType.DEFAULT, false);
+		@SuppressWarnings("unused")
+		Updater updater = new Updater(this, "iBlock", this.getFile(), Updater.UpdateType.DEFAULT, false);
 	}
 
 	public void onDisable() {
 		PluginDescriptionFile pdfFile = this.getDescription();
-		log.info("[iBlock] Version " + pdfFile.getVersion()
-				+ " disabled successfully!");
+		log.info("[iBlock] Version " + pdfFile.getVersion() + " disabled successfully!");
 	}
 
 	public void loadConfiguration() {

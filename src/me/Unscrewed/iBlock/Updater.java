@@ -37,6 +37,7 @@ import org.bukkit.plugin.Plugin;
  * @author H31IX
  */
 
+@SuppressWarnings("restriction")
 public class Updater 
 {
     private Plugin plugin;
@@ -44,7 +45,8 @@ public class Updater
     private String versionTitle;
     private String versionLink;
     private long totalSize; // Holds the total size of the file
-    private double downloadedSize; // TODO: Holds the number of bytes downloaded
+    @SuppressWarnings("unused")
+	private double downloadedSize; // TODO: Holds the number of bytes downloaded
     private int sizeLine; // Used for detecting file size
     private int multiplier; // Used for determining when to broadcast download updates
     private boolean announce; // Whether to announce file downloads
@@ -324,7 +326,8 @@ public class Updater
     /**
      * Part of Zip-File-Extractor, modified by H31IX for use with Bukkit
      */      
-    private void unzip(String file) 
+    @SuppressWarnings("rawtypes")
+	private void unzip(String file) 
     {
         try
         {
@@ -531,7 +534,7 @@ public class Updater
     /**
      * Part of RSS Reader by Vogella, modified by H31IX for use with Bukkit
      */     
-    @SuppressWarnings("null")
+    
     private void readFeed() 
     {
         try 
