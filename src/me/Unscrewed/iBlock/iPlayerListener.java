@@ -15,35 +15,27 @@ public class iPlayerListener implements Listener {
 
 	private iBlock plugin;
 
-	public boolean hasPermissionWater(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.bucket.water");
-	}
-
-	public boolean hasPermissionLava(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.bucket.lava");
-	}
-
 	@EventHandler
 	public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
 		Player player = event.getPlayer();
-		if (!hasPermissionWater(player, "iBlock.bucket.water")
+		if (!player.hasPermission("iBlock.bucket.water")
 				&& event.getBucket() == Material.WATER_BUCKET) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(
 					ChatColor.GREEN + "[iBlock] " + ChatColor.RED
 							+ plugin.getConfig().getString("waterBucketM"));
-		} else if (hasPermissionWater(player, "iBlock.bucket.water")
+		} else if (player.hasPermission("iBlock.bucket.water")
 				&& event.getBucket() == Material.WATER_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}
 
-		if (!hasPermissionLava(player, "iBlock.bucket.lava")
+		if (!player.hasPermission("iBlock.bucket.lava")
 				&& event.getBucket() == Material.LAVA_BUCKET) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(
 					ChatColor.GREEN + "[iBlock] " + ChatColor.RED
 							+ plugin.getConfig().getString("lavaBucketM"));
-		} else if (hasPermissionLava(player, "iBlock.bucket.lava")
+		} else if (player.hasPermission("iBlock.bucket.lava")
 				&& event.getBucket() == Material.LAVA_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}

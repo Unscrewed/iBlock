@@ -19,14 +19,6 @@ public class iBlockListener implements Listener {
 
 	private iBlock plugin;
 
-	public boolean hasPermissionPlace(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.place");
-	}
-
-	public boolean hasPermissionBreak(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.break");
-	}
-
 	@EventHandler
 	public void onEntityExplode(EntityExplodeEvent event) {
 		Iterator<Block> it = event.blockList().iterator();
@@ -39,7 +31,7 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		if (!hasPermissionPlace(player, "iBlock.place")
+		if (!player.hasPermission("iBlock.place")
 				&& iBlock.deniedBlocksPlace.contains(event.getBlock()
 						.getTypeId())) {
 			event.setCancelled(true);
@@ -58,7 +50,7 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
-		if (!hasPermissionBreak(player, "iBlock.break")
+		if (!player.hasPermission("iBlock.break")
 				&& iBlock.deniedBlocksBreak.contains(event.getBlock()
 						.getTypeId())) {
 			event.setCancelled(true);
