@@ -13,13 +13,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/////////////////////////////////////
-// ALL WORK HERE IS BY "UNSCREWED" //
-// PLEASE, DO NOT DECOMPILE MY WORK//
-// WITH THE FOLLOWING REASONS:     //
-// TO STEAL, COPYPASTE AND REUPLOAD//
-// THANKS IN ADVANCE!              //
-/////////////////////////////////////
 
 public class iBlock extends JavaPlugin{
 	private iBlockListener blockListener;
@@ -73,7 +66,6 @@ public class iBlock extends JavaPlugin{
 		     this.getConfig().options().copyDefaults(true);
 		     this.saveConfig();
 	}
-	
 	public static List<Integer> deniedBlocksPlace = new ArrayList<Integer>();
 	public static List<Integer> deniedBlocksBreak = new ArrayList<Integer>();
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
@@ -97,3 +89,4 @@ public class iBlock extends JavaPlugin{
       return false;
 	}
 }
+
