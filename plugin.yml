@@ -1,8 +1,0 @@
-name: iBlock
-version: 3.0
-main: me.Unscrewed.iBlock.iBlock
-commands:
-  iblock:
-    description: Reloads the iBlock configuration file.
-    usage: |
-           /<command>
