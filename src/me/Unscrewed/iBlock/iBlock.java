@@ -35,12 +35,6 @@ public class iBlock extends JavaPlugin{
 	public void onDisable() {
 		PluginDescriptionFile pdfFile = this.getDescription();
 		log.info("[iBlock] Version " + pdfFile.getVersion() + " disabled successfully!");}
-	public boolean hasPermissionReload(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.reload");
-		}
-	public boolean hasPermissionDebug(Player player, String string) {
-		return player.isOp() || player.hasPermission("iBlock.debug");
-	}
 	public void loadConfiguration(){
 	     String bannedBucketWaterM = "waterBucketM";
 	     String bannedBucketLavaM = "lavaBucketM";
