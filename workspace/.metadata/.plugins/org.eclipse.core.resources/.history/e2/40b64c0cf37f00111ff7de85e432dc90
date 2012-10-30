@@ -1,0 +1,26 @@
+package me.Unscrewed.iBlock;
+
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+
+public class iBlockListenerBreak implements Listener{
+	public iBlockListenerBreak(){
+	}
+	@EventHandler
+	public void onBlockBreak(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		if(!hasPermissionUse(player, "iBlock.use") && iBlock.deniedBlocksPlace.contains(event.getBlock().getTypeId())){
+			//Ignore this player -- do not block banned breakable items.
+			event.setCancelled(true);
+			player.sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + "You're not allowed to break this block.");
+		}else if(iBlock.deniedBlocksBreak.contains(event.getBlock().getTypeId())){
+			event.setCancelled(false);
+		}
+	}
+	public boolean hasPermissionUse(Player player, String string) {
+		return player.isOp() || player.hasPermission("iBlock.use");
+	}
+}

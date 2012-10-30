@@ -1,0 +1,54 @@
+package me.Unscrewed.iBlock;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+/////////////////////////////////////
+// ALL WORK HERE IS BY "UNSCREWED" //
+// PLEASE, DO NOT DECOMPILE MY WORK//
+// WITH THE FOLLOWING REASONS:     //
+// TO STEAL, COPYPASTE AND REUPLOAD//
+// MY WORK. THANKS IN ADVANCE!     //
+/////////////////////////////////////
+
+public class iBlock extends JavaPlugin{
+	private final iBlockListener blockListener = new iBlockListener();
+	Logger log = Logger.getLogger("Minecraft");
+
+	public void onEnable() {
+		log.info("[iBlock] Version 2.0 enabled successfully!");
+		PluginManager pm = getServer().getPluginManager();
+	     pm.registerEvents(blockListener, this);
+		deniedBlocksPlace = getConfig().getIntegerList("bannedBlocksPlace");
+		deniedBlocksBreak = getConfig().getIntegerList("bannedBlocksBreak");
+		}
+	
+	public void onDisable() {
+		log.info("[iBlock] Version 2.0 disabled successfully!");}
+	public boolean hasPermissionReload(Player player, String string) {
+		return player.isOp() || player.hasPermission("iBlock.reload");
+	}
+	public static List<Integer> deniedBlocksPlace = new ArrayList<Integer>();
+	public static List<Integer> deniedBlocksBreak = new ArrayList<Integer>();
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
+        if(sender instanceof Player){
+        	Player player = (Player) sender;
+        	if(cmd.getName().equalsIgnoreCase("iBlock") && !hasPermissionReload(player, "iBlock.reload")){
+        	player.sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + "You do not have permission to use this command.");
+			return true;
+		}else{
+			this.reloadConfig();
+			player.sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + "Configuration file reloaded.");
+		return true; 
+		}
+       }
+      return false;
+		}
+	}

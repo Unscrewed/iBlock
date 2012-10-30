@@ -1,0 +1,21 @@
+name: "AntiGuest"
+version: "${project.version}"
+main: "de.cubeisland.AntiGuest.AntiGuest"
+dev-url: "http://dev.bukkit.org/server-mods/antiguest"
+authors:
+  - "Quick_Wango"
+description: "Prevents guests from griefing."
+website: "http://cubeisland.de"
+commands:
+  antiguest:
+    usage: "/<command> <subcommand> [arguments...]"
+    description: "This is the base command for all AntiGuest commands"
+    aliases:
+      - "ag"
+permissions:
+  antiguest.*:
+    description: "Allows the player to do everything"
+    default: op
+    children:
+      antiguest.preventions.*: true
+      antiguest.commands.*: true
