@@ -1,17 +1,36 @@
-waterBucketM: You are not allowed to place water here.
-lavaBucketM: You are not allowed to place lava here.
-bannedBlocksPlaceM: You are not allowed to place this block.
-bannedBlocksBreakM: You are not allowed to break this block.
-bannedBlocksPlace:
-- '7'
-- '9'
-- '11'
-- '19'
-- '30'
-- '52'
-- '78'
-- '79'
-- '97'
-- '120'
-bannedBlocksBreak:
-- '7'
+#----------------------#
+# Bucket Configuration #
+#----------------------#
+
+Bucket:
+  Water:
+    message: You are not allowed to place water here.
+  Lava:
+    message: You are not allowed to place lava here.
+
+#---------------------#
+# Block Configuration #
+#---------------------#
+
+Place:
+  message: You are not allowed to place this block.
+  bannedBlocks:
+   - '7'
+   - '9'
+   - '11'
+   - '19'
+   - '30'
+   - '52'
+   - '78'
+   - '79'
+   - '97'
+   - '120'
+Break:
+   message: You are not allowed to break this block.
+   bannedBlocks:
+   - '7'
+
+#---------------------#
+# Plugin created by:  #
+#   Nathan Frissen    #
+#---------------------#

@@ -19,7 +19,7 @@ public class iEntityListener implements Listener {
 	public void onEntityExplode(EntityExplodeEvent event) {
 		Iterator<Block> it = event.blockList().iterator();
 		while (it.hasNext()) {
-			if (plugin.getConfig().getIntegerList("bannedBlocksBreak").contains(it.next().getTypeId()))
+			if (plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(it.next().getTypeId()))
 				it.remove();
 			
 		}

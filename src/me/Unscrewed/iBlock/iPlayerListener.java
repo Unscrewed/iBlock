@@ -20,14 +20,14 @@ public class iPlayerListener implements Listener {
 		Player player = event.getPlayer();
 		if (!player.hasPermission("iBlock.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("waterBucketM"));
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Water.message"));
 		} else if (player.hasPermission("iBlock.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}
 
 		if (!player.hasPermission("iBlock.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("lavaBucketM"));
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Lava.message"));
 		} else if (player.hasPermission("iBlock.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}

@@ -18,10 +18,10 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("iBlock.place") && plugin.getConfig().getIntegerList("bannedBlocksPlace").contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("iBlock.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("bannedBlocksPlaceM"));
-		} else if (plugin.getConfig().getIntegerList("bannedBlocksPlace").contains(event.getBlock().getTypeId())) {
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Place.message"));
+		} else if (plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			// Ignore this player -- do not block banned place-able blocks.
 		}
 	}
@@ -29,11 +29,11 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("iBlock.break") && plugin.getConfig().getIntegerList("bannedBlocksBreak").contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("iBlock.break") && plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
-			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("bannedBlocksBreakM"));
+			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Break.message"));
 		} else {
-			if (plugin.getConfig().getIntegerList("bannedBlocksBreak").contains(event.getBlock().getTypeId())) {
+			if (plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
 				// Ignore this player -- do not block banned breakable blocks.
 			}
 		}
