@@ -18,10 +18,10 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("iBlock.place") && iBlock.deniedBlocksPlace.contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("iBlock.place") && plugin.getConfig().getIntegerList("bannedBlocksPlace").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("bannedBlocksPlaceM"));
-		} else if (iBlock.deniedBlocksPlace.contains(event.getBlock().getTypeId())) {
+		} else if (plugin.getConfig().getIntegerList("bannedBlocksPlace").contains(event.getBlock().getTypeId())) {
 			// Ignore this player -- do not block banned place-able blocks.
 		}
 	}
@@ -29,12 +29,11 @@ public class iBlockListener implements Listener {
 	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event) {
 		Player player = event.getPlayer();
-		if (!player.hasPermission("iBlock.break")
-				&& iBlock.deniedBlocksBreak.contains(event.getBlock().getTypeId())) {
+		if (!player.hasPermission("iBlock.break") && plugin.getConfig().getIntegerList("bannedBlocksBreak").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("bannedBlocksBreakM"));
 		} else {
-			if (iBlock.deniedBlocksBreak.contains(event.getBlock().getTypeId())) {
+			if (plugin.getConfig().getIntegerList("bannedBlocksBreak").contains(event.getBlock().getTypeId())) {
 				// Ignore this player -- do not block banned breakable blocks.
 			}
 		}

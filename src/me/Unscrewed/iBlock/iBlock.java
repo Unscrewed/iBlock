@@ -36,8 +36,6 @@ public class iBlock extends JavaPlugin {
         if ( !configFile.exists())
         saveDefaultConfig();
         reloadConfig();
-        deniedBlocksPlace = getConfig().getIntegerList("bannedBlocksPlace");
-		deniedBlocksBreak = getConfig().getIntegerList("bannedBlocksBreak");
 		@SuppressWarnings("unused")
 		Updater updater = new Updater(this, "iBlock", this.getFile(), Updater.UpdateType.DEFAULT, false);
 	}
@@ -51,9 +49,6 @@ public class iBlock extends JavaPlugin {
 		this.getConfig().options().copyDefaults(true);
 		this.saveConfig();
 	}
-
-	public static List<Integer> deniedBlocksPlace = new ArrayList<Integer>();
-	public static List<Integer> deniedBlocksBreak = new ArrayList<Integer>();
 
 	public boolean onCommand(CommandSender sender, Command cmd,
 			String commandLabel, String[] args) {
