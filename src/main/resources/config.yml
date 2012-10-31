@@ -4,8 +4,10 @@
 
 Bucket:
   Water:
+    kick: false
     message: You are not allowed to place water here.
   Lava:
+    kick: false
     message: You are not allowed to place lava here.
 
 #---------------------#
@@ -13,6 +15,7 @@ Bucket:
 #---------------------#
 
 Place:
+  kick: false
   message: You are not allowed to place this block.
   bannedBlocks:
    - '7'
@@ -26,6 +29,7 @@ Place:
    - '97'
    - '120'
 Break:
+   kick: false
    message: You are not allowed to break this block.
    bannedBlocks:
    - '7'

@@ -21,6 +21,9 @@ public class iBlockListener implements Listener {
 		if (!player.hasPermission("iBlock.place") && plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Place.message"));
+			if (plugin.getConfig().getBoolean("Place.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Place.message"));
+			}
 		} else if (plugin.getConfig().getIntegerList("Place.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			// Ignore this player -- do not block banned place-able blocks.
 		}
@@ -32,6 +35,9 @@ public class iBlockListener implements Listener {
 		if (!player.hasPermission("iBlock.break") && plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Break.message"));
+			if (plugin.getConfig().getBoolean("Break.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Break.message"));
+			}
 		} else {
 			if (plugin.getConfig().getIntegerList("Break.bannedBlocks").contains(event.getBlock().getTypeId())) {
 				// Ignore this player -- do not block banned breakable blocks.

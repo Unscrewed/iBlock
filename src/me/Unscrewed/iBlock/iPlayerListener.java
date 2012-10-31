@@ -21,6 +21,9 @@ public class iPlayerListener implements Listener {
 		if (!player.hasPermission("iBlock.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Water.message"));
+			if (plugin.getConfig().getBoolean("Bucket.Water.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Bucket.Water.message"));
+			}
 		} else if (player.hasPermission("iBlock.bucket.water") && event.getBucket() == Material.WATER_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}
@@ -28,6 +31,9 @@ public class iPlayerListener implements Listener {
 		if (!player.hasPermission("iBlock.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
 			event.setCancelled(true);
 			event.getPlayer().sendMessage(ChatColor.GREEN + "[iBlock] " + ChatColor.RED + plugin.getConfig().getString("Bucket.Lava.message"));
+			if (plugin.getConfig().getBoolean("Bucket.Lava.kick")){
+				event.getPlayer().kickPlayer(plugin.getConfig().getString("Bucket.Lava.message"));
+			}
 		} else if (player.hasPermission("iBlock.bucket.lava") && event.getBucket() == Material.LAVA_BUCKET) {
 			// Ignore this player -- do not block bucket use.
 		}
