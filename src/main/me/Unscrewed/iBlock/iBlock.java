@@ -56,9 +56,7 @@ public class iBlock extends JavaPlugin {
 				player.sendMessage(ChatColor.GREEN + "[iBlock Information]");
 				player.sendMessage(ChatColor.RED + "Configuration file reloaded.");
 				player.sendMessage(ChatColor.GREEN + "[Version Information]");
-				player.sendMessage(ChatColor.RED + "Version: 3.0-DEV-b1");
-				player.sendMessage(ChatColor.RED + "Updates: Needs more testing.");
-				player.sendMessage(ChatColor.RED + "Thank you very much for using iBlock!");
+				player.sendMessage(ChatColor.RED + "Version: 3.0.1");
 				return true;
 			} else {
 				player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
